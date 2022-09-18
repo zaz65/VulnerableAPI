@@ -10,14 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: APIContractSecurityAudit@3
-  inputs:
-    apiToken: '$(42C_API_TOKEN)'
-    defaultCollectionName: 'VAMPI'
-    logLevel: DEBUG
 - task: SnykSecurityScan@1
   inputs:
     serviceConnectionEndpoint: 'snyk-free'
     testType: 'app'
     monitorWhen: 'never'
     failOnIssues: true
+- task: APIContractSecurityAudit@3
+  inputs:
+    apiToken: '$(42C_API_TOKEN)'
+    defaultCollectionName: 'VAMPI'
+    logLevel: DEBUG
